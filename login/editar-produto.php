@@ -1,5 +1,14 @@
 <?php
 require "../includes/cabecalho.php";
+require "../includes/conecta.php";
+require "../login/funcoes-produto.php"; 
+
+$sql = "SELECT * FROM  produtos ORDER BY DATA id DESC";
+
+$resultado = $mysqli->query($sql);
+print_r($resultado);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,14 +16,20 @@ require "../includes/cabecalho.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="..\home\estilo.css">
-    <title>Document</title>
     
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="..\home\estilo.css">
+
     <style>
+        section{
+            text-align: center;
+        }
         h1 {
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
             margin-top: 5%;
+            margin-bottom: 4%;
         }
 
         .formulario {
@@ -26,6 +41,7 @@ require "../includes/cabecalho.php";
             padding-bottom: 1%;
             padding-top: 1%;
             border-radius: 10px;
+            margin-top: 4%;
         }
         .adicionar{
             display: flex;
@@ -43,40 +59,19 @@ require "../includes/cabecalho.php";
             height: 30px;
            padding-right: 5%;
         }
-        @media  screen and (max-width:1600px) {
-            h1 {
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-            margin-top: 5%;
-        }
-
-        .formulario {
-            background-color: #1d7373;
+        .ir-formulario{
+            margin-top: 2%;
+            text-decoration: none;
             color: #fff;
-            text-align: center;
-            margin-left: 10%;
-            margin-right: 10%;
-            padding-bottom: 1%;
-            padding-top: 1%;
+            background-color: #1d7373;
+          padding: 2% 2%;
             border-radius: 10px;
+        
         }
-        .adicionar{
-            display: flex;
-            border-bottom: solid 1px #fff;
-            text-align: center;
-            align-items: center;
-            padding-left: 10%;
-            justify-content: space-between;
-        }
-        P{
-            padding: 2%;
-            
-        }
-        img{
-            height: 30px;
-           padding-right: 5%;
-        }
-    }
+       
+        
+ 
+    
 
   
     </style>
@@ -85,26 +80,23 @@ require "../includes/cabecalho.php";
 <body>
     <section>
         <h1>Adicionar ou remover produtos</h1>
-        <div class="formulario">
-        <div class="adicionar">
-            <p>calça cargo</p><img src="../home/imagens/8325947-mecanico-ferramenta-logotipo-icone-design-gratis-vetor.jpg" alt=""><img src="../home/imagens/excluir-o-botao-vermelho-do-icone-ilustracao-do-simbolo-de-lata-de-lixo_692379-615.avif" alt="">
-            </div>
-            <div class="adicionar">
-            <p>calça cargo</p><img src="../home/imagens/8325947-mecanico-ferramenta-logotipo-icone-design-gratis-vetor.jpg" alt=""><img src="../home/imagens/excluir-o-botao-vermelho-do-icone-ilustracao-do-simbolo-de-lata-de-lixo_692379-615.avif" alt="">
-            </div>
-          
-            <div class="adicionar">
-            <p>calça cargo</p><img src="../home/imagens/8325947-mecanico-ferramenta-logotipo-icone-design-gratis-vetor.jpg" alt=""><img src="../home/imagens/excluir-o-botao-vermelho-do-icone-ilustracao-do-simbolo-de-lata-de-lixo_692379-615.avif" alt="">
-            </div>
-            
-            <div class="adicionar">
-            <p>calça cargo</p><img src="../home/imagens/8325947-mecanico-ferramenta-logotipo-icone-design-gratis-vetor.jpg" alt=""><img src="../home/imagens/excluir-o-botao-vermelho-do-icone-ilustracao-do-simbolo-de-lata-de-lixo_692379-615.avif" alt="">
-            </div>
-          
-            <div class="adicionar">
-            <p>calça cargo</p><img src="../home/imagens/8325947-mecanico-ferramenta-logotipo-icone-design-gratis-vetor.jpg" alt=""><img src="../home/imagens/excluir-o-botao-vermelho-do-icone-ilustracao-do-simbolo-de-lata-de-lixo_692379-615.avif" alt="">
-            </div>
-        </div>
+      
+    <table class="table">
+        <thead>
+            <tr>
+                <th scape="col">#id</th>
+                <th scape="col">produto</th>
+                <th scape="col">imagem</th>
+                <th scape="col">categoria</th>
+                <th scape="col">tipo</th>
+                <th scape="col">descrição</th>
+                <th scape="col">data</th>
+                <th scape="col">valor</th>
+                <th scape= "col">editar</th>
+            </tr>
+        </thead>
+    </table>
+    <a href="../login/formulario.php" class="ir-formulario">adicionar produto</a>
     </section>
 
 
